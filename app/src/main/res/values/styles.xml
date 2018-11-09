@@ -1,0 +1,103 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- NoDisplay -->
+    <style name="NoUiAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowNoDisplay">true</item>
+    </style>
+
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+    <style name="FormContainer">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginRight">@dimen/center_horizontal_margin</item>
+        <item name="android:layout_marginLeft">@dimen/center_horizontal_margin</item>
+    </style>
+
+    <style name="LowFormContainer" parent="FormContainer">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginBottom">@dimen/center_low_bottom_margin</item>
+    </style>
+
+    <!-- NewsCard -->
+    <style name="Card" parent="AppTheme">
+        <item name="cardContainerStyle">@style/CardContainer</item>
+        <item name="imageCoverStyle">@style/CardCover</item>
+        <item name="cardSeparatorStyle">@style/CardSeparator</item>
+        <item name="newsCardTitleStyle">@style/NewsCardTitle</item>
+        <item name="newsCardTagLineStyle">@style/NewsCardTagLine</item>
+        <item name="newsCardDateStyle">@style/NewsCardDate</item>
+    </style>
+    <style name="CardContainer">
+        <item name="android:padding">@dimen/l_margin</item>
+        <item name="android:layout_height">192dp</item>
+    </style>
+    <style name="CardCover">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="CardSeparator">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+    </style>
+    <style name="NewsCardTitle">
+        <item name="android:layout_marginLeft">@dimen/l_margin</item>
+        <item name="android:layout_marginBottom">@dimen/md_margin</item>
+        <item name="android:textSize">@dimen/md_text</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="NewsCardTagLine">
+        <item name="android:layout_marginLeft">@dimen/l_margin</item>
+
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">5</item>
+    </style>
+    <style name="NewsCardDate">
+        <item name="android:layout_marginLeft">@dimen/l_margin</item>
+        <item name="android:layout_marginTop">@dimen/l_margin</item>
+    </style>
+
+    <!-- NewsDetails -->
+    <style name="NewsDetails" parent="AppTheme">
+        <item name="newsDetailsTitleStyle">@style/NewsDetailsTitle</item>
+        <item name="newsCoverStyle">@style/NewsDetailsCover</item>
+        <item name="newsDetailsText">@style/NewsDetailsText</item>
+    </style>
+    <style name="NewsDetailsTitle">
+        <item name="android:textSize">@dimen/l_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/md_margin</item>
+    </style>
+    <style name="NewsDetailsCover">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginLeft">@dimen/md_margin</item>
+        <item name="android:layout_marginRight">@dimen/md_margin</item>
+    </style>
+    <style name="NewsDetailsText">
+        <item name="android:layout_marginLeft">@dimen/md_margin</item>
+        <item name="android:layout_marginRight">@dimen/md_margin</item>
+    </style>
+
+    <style name="ClassCard" parent="AppTheme">
+    </style>
+
+    <style name="ClassDetails" parent="AppTheme">
+    </style>
+</resources>

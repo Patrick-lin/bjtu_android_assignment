@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NewsCard -->
+    <attr name="cardContainerStyle" format="reference"/>
+    <attr name="imageCoverStyle" format="reference"/>
+    <attr name="cardSeparatorStyle" format="reference"/>
+    <attr name="newsCardTitleStyle" format="reference" />
+    <attr name="newsCardTagLineStyle" format="reference"/>
+    <attr name="newsCardDateStyle" format="reference"/>
+
+    <!-- NewsDetails-->
+    <attr name="newsDetailsTitleStyle" format="reference" />
+    <attr name="newsCoverStyle" format="reference"/>
+    <attr name="newsDetailsText" format="reference" />
+</resources>
