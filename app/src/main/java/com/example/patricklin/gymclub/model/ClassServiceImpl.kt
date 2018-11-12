@@ -59,7 +59,9 @@ class ClassServiceImpl : ClassService {
 
     override fun getClasses(): LiveData<List<Class>> = classes
 
-    override fun getClass(id: Int): LiveData<Class> = Transformations.map(classes) {
+    override fun getLiveClass(id: Int): LiveData<Class> = Transformations.map(classes) {
         it.find { c -> c.id == id }
     }
+
+    override fun getClass(id: Int): Class? = classes.value.orEmpty().find { c -> c.id == id }
 }

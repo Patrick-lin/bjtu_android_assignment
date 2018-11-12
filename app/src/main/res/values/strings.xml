@@ -22,9 +22,13 @@
 
     <string name="button_logout">Logout</string>
 
+
+    <string name="class_number_of_seats">%s available seat(s)</string>
     <string name="full_class">Full</string>
     <string name="button_register_class">Register</string>
     <string name="button_register_class_full">Full</string>
+    <string name="button_select_trainers">Select trainers</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

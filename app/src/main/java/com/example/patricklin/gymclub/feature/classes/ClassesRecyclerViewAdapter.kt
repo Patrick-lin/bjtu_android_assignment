@@ -2,7 +2,6 @@ package com.example.patricklin.gymclub.feature.classes
 
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import com.example.patricklin.gymclub.R
 
 import com.example.patricklin.gymclub.feature.classes.ClassesFragment.OnClassesFragmentInteractionListener
 import com.example.patricklin.gymclub.model.Class
-import kotlinx.android.synthetic.main.fragment_classes.view.*
+import kotlinx.android.synthetic.main.fragment_class_item.view.*
 
 class ClassesRecyclerViewAdapter(
         private val fragment: Fragment,
@@ -33,7 +32,7 @@ class ClassesRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_classes, parent, false)
+                .inflate(R.layout.fragment_class_item, parent, false)
         return ViewHolder(view)
     }
 

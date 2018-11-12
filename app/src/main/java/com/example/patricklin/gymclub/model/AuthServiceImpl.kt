@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 import com.example.patricklin.gymclub.model.AuthService.*
 
 class AuthServiceImpl : AuthService {
-    private var token: String? = null
+    private var token: String? = "aze"
 
     override fun isLogged() = token != null
     override fun getToken(): String? = token

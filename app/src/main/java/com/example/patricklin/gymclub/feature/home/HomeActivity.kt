@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
-import android.util.Log
 
 import com.example.patricklin.gymclub.feature.news.NewsFragment
 import com.example.patricklin.gymclub.R
@@ -39,7 +38,6 @@ class HomeActivity : BaseActivity(), NewsFragment.OnNewsInteraction, SettingsFra
         setContentView(R.layout.activity_home)
         appComponent.inject(this)
 
-        Log.i("test", "created $savedInstanceState")
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         home_view_pager.adapter = HomePageAdapter(supportFragmentManager)
         home_view_pager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
@@ -53,12 +51,6 @@ class HomeActivity : BaseActivity(), NewsFragment.OnNewsInteraction, SettingsFra
                 }
             }
         })
-    }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        Log.i("test", "save instance $outState")
-
-        super.onSaveInstanceState(outState)
     }
 
     private fun getIndexFromId(id: Int) = when(id) {

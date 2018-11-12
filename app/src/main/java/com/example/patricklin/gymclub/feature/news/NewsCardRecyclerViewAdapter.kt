@@ -35,8 +35,6 @@ class NewsCardRecyclerViewAdapter(
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as News
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
             mListener?.onNewsInteraction(item)
         }
     }

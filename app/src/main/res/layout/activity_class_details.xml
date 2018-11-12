@@ -7,42 +7,51 @@
     tools:context=".feature.classes.ClassDetailsActivity"
     android:theme="@style/ClassDetails">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/class_detail_cover"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="@dimen/md_margin"
-            android:layout_marginLeft="@dimen/md_margin"
-            android:layout_marginRight="@dimen/md_margin"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/class_detail_cover"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="@dimen/md_margin"
+                android:layout_marginLeft="@dimen/md_margin"
+                android:layout_marginRight="@dimen/md_margin"/>
 
-        <TextView
-            android:id="@+id/text_class_details_tagLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_margin"
-            android:layout_marginRight="@dimen/md_margin"
-            android:layout_marginLeft="@dimen/md_margin"
-            android:textSize="@dimen/md_text"
-            android:gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/text_class_details_tagLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/md_margin"
+                android:layout_marginRight="@dimen/md_margin"
+                android:layout_marginLeft="@dimen/md_margin"
+                android:textSize="@dimen/md_text"
+                android:gravity="center_horizontal"/>
 
-        <TextView
-            android:id="@+id/text_class_detail_places"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_class_detail_places"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/select_trainers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_select_trainers"/>
 
-        <!--<fragment-->
-            <!--android:id="@+id/trainerListFragment"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--/>-->
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/selected_trainers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
