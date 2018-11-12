@@ -45,8 +45,9 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/selected_trainers"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/register_button"

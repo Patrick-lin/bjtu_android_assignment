@@ -21,8 +21,6 @@ import javax.inject.Inject
  * [ClassesFragment.OnClassesFragmentInteractionListener] interface.
  */
 class ClassesFragment : BaseFragment() {
-
-    // TODO: Customize parameters
     private var columnCount = 1
 
     @Inject
@@ -87,7 +85,6 @@ class ClassesFragment : BaseFragment() {
 
     companion object {
 
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
         // TODO: Customize parameter initialization

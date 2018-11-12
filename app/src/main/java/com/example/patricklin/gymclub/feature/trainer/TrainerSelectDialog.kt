@@ -10,21 +10,12 @@ import com.example.patricklin.gymclub.model.Trainer
 object TrainerSelectDialog {
     class Builder(val context: Activity) {
         private val builder = AlertDialog.Builder(context)
-        private var positiveText = "Ok"
-        private var negativeText = "Cancel"
-        private var onPositiveClick: ((selected: List<Trainer>, dialog: DialogInterface, which: Int) -> Unit)? = null
-        private var onNegativeClick: ((dialog: DialogInterface, which: Int) -> Unit)? = null
-        private var trainers = emptyList<Trainer>()
-
-        fun setTrainers(trainers: List<Trainer>): Builder {
-            this.trainers = trainers
-            return this
-        }
-
-        fun setOnPositiveClick(onClick: (selected: List<Trainer>, dialog: DialogInterface, which: Int) -> Unit): Builder {
-            this.onPositiveClick = onClick
-            return this
-        }
+        var positiveText = "Ok"
+        var negativeText = "Cancel"
+        var onPositiveClick: ((selected: List<Trainer>, dialog: DialogInterface, which: Int) -> Unit)? = null
+        var onNegativeClick: ((dialog: DialogInterface, which: Int) -> Unit)? = null
+        var trainers = emptyList<Trainer>()
+        var nbSelectableTrainer = 1
 
         fun create(): AlertDialog {
             val adapter = SelectTrainerRecyclerViewAdapter(trainers)
