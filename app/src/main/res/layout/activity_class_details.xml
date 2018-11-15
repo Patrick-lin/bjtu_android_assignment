@@ -36,12 +36,21 @@
             <TextView
                 android:id="@+id/text_class_detail_places"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/md_margin"/>
             <Button
                 android:id="@+id/select_trainers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_select_trainers"/>
+
+            <TextView
+                android:id="@+id/text_trainer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                android:text="@string/title_trainer"
+                android:textSize="@dimen/l_text"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/selected_trainers"

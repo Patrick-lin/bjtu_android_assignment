@@ -77,10 +77,10 @@ class ClassDetailsActivity : BaseActivity() {
             }
 
             val dialog = TrainerSelectDialog.Builder(context)
-                    .also {
-                        it.trainers = trainers
-                        it.nbSelectableTrainer = this.nbChoosableTrainer
-                        it.onPositiveClick = { selected, _, _ ->
+                    .apply {
+                        this.trainers = trainers
+                        nbSelectableTrainer = nbChoosableTrainer
+                        onPositiveClick = { selected, _, _ ->
                             selectedTrainers = selected
                             renderSelectedTrainers()
                         }
@@ -119,6 +119,7 @@ class ClassDetailsActivity : BaseActivity() {
     }
 
     private fun renderSelectedTrainers() {
+        text_trainer_title.visibility = if (selectedTrainers != null) View.VISIBLE else View.GONE
         selectedTrainers?.apply {
             selectedTrainersAdapter?.trainers = this
             selectedTrainersAdapter?.notifyDataSetChanged()

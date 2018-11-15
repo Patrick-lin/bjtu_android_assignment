@@ -24,11 +24,11 @@ import kotlinx.android.synthetic.main.fragment_select_trainer_item.view.*
  */
 class SelectTrainerRecyclerViewAdapter(
         private val trainers: List<Trainer>,
+        nbSelectableTrainer: Int = 1,
         private val listener: TrainerRecyclerInteraction? = null)
     : RecyclerView.Adapter<SelectTrainerRecyclerViewAdapter.ViewHolder>() {
     private val mOnClickListener: View.OnClickListener
-    private val checkboxLifecyle = CheckboxLifecycle<Trainer>(1)
-
+    private val checkboxLifecyle = CheckboxLifecycle<Trainer>(nbSelectableTrainer)
 
     var onMaxReachedListener: (() -> Unit)? = null
     var onBelowMaxListener: (() -> Unit)? = null

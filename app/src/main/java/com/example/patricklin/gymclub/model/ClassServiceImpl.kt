@@ -30,7 +30,9 @@ class ClassServiceImpl : ClassService {
                         title = "Cardio training",
                         tagLine = faker.lorem().sentence(3),
                         cover = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2720094953,3884838007&fm=15&gp=0.jpg",
-                        availableTrainerIds = listOf(1),
+                        availableTrainerIds = listOf(0, 1, 2, 3, 4),
+                        choosableTrainer = true,
+                        nbChoosableTrainer = 2,
                         maxPlaces = 50,
                         takenPlaces = 5
                 ),

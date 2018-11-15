@@ -18,12 +18,13 @@ object TrainerSelectDialog {
         var nbSelectableTrainer = 1
 
         fun create(): AlertDialog {
-            val adapter = SelectTrainerRecyclerViewAdapter(trainers)
+            val adapter = SelectTrainerRecyclerViewAdapter(trainers, nbSelectableTrainer)
             val lv = RecyclerView(context)
             lv.layoutManager = LinearLayoutManager(context)
             lv.adapter = adapter
 
             val dialog = builder
+                    .setTitle("Select trainers ($nbSelectableTrainer)")
                     .setPositiveButton(positiveText) { dialog, which ->
                         onPositiveClick?.invoke(adapter.getSelectedItems(), dialog, which)
                     }

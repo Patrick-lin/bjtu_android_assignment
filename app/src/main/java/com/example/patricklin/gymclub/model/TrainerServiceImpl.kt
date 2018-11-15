@@ -18,7 +18,7 @@ class TrainerServiceImpl : TrainerService {
                 firstName = name.firstName(),
                 lastName = name.lastName(),
                 age = faker.number().numberBetween(20, 30),
-                cover = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2013802756,3551706854&fm=26&gp=0.jpg"
+                cover = avatars.random()
         )
 
         trainers.value = listOf(
@@ -42,4 +42,18 @@ class TrainerServiceImpl : TrainerService {
     override fun getTrainersListIn(ids: Iterable<Int>): List<Trainer> = trainers.value?.filter {
         trainer -> ids.find { id -> trainer.id == id } != null
     } ?: emptyList()
+
+
+    companion object {
+        val avatars = listOf(
+                "https://www.randomaddressgenerator.com/media/face/male36.jpg",
+                "https://www.randomaddressgenerator.com/media/face/male67.jpg",
+                "https://www.randomaddressgenerator.com/media/face/female72.jpg",
+                "https://www.randomaddressgenerator.com/media/face/male44.jpg",
+                "https://www.randomaddressgenerator.com/media/face/female40.jpg",
+                "https://www.randomaddressgenerator.com/media/face/male50.jpg",
+                "https://www.randomaddressgenerator.com/media/face/male32.jpg",
+                "https://www.randomaddressgenerator.com/media/face/female82.jpg"
+        )
+    }
 }
