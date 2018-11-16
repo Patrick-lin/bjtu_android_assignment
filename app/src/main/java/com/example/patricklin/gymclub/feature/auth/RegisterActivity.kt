@@ -11,6 +11,7 @@ import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.feature.home.HomeActivity
 import com.example.patricklin.gymclub.model.AuthService
+import com.example.patricklin.gymclub.model.UserApi
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -70,7 +71,7 @@ class RegisterActivity : BaseActivity() {
     private fun register() {
         register_button.visibility = View.GONE
         progress_bar.visibility = View.VISIBLE
-        authService.register(this, AuthService.RegisterInput(
+        authService.register(this, UserApi.RegisterInput(
                 username = username_input.text.toString(),
                 password = password_input.text.toString())
         ) {
@@ -84,13 +85,13 @@ class RegisterActivity : BaseActivity() {
         when (error) {
             else -> Toast.makeText(
                     this,
-                    getString(R.string.unexpected_error),
+                    R.string.unexpected_error,
                     Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    private fun registerSuccess(success: AuthService.RegisterResult) {
+    private fun registerSuccess(success: UserApi.AuthResult) {
         val intent = Intent(this, HomeActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)

@@ -2,6 +2,7 @@ package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.model.AuthService
 import com.example.patricklin.gymclub.model.AuthServiceImpl
+import com.example.patricklin.gymclub.model.UserApi
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,5 +11,5 @@ import javax.inject.Singleton
 class AuthModule {
     @Provides
     @Singleton
-    fun provideAuth(): AuthService = AuthServiceImpl()
+    fun provideAuth(userApi: UserApi): AuthService = AuthServiceImpl(userApi)
 }

@@ -3,6 +3,7 @@ package com.example.patricklin.gymclub.feature.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_login.*
 import android.view.inputmethod.InputMethodManager
@@ -12,6 +13,7 @@ import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.feature.home.HomeActivity
 import com.example.patricklin.gymclub.model.AuthService
+import com.example.patricklin.gymclub.model.UserApi
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity() {
@@ -64,7 +66,7 @@ class LoginActivity : BaseActivity() {
     private fun logIn() {
         login_button.visibility = View.GONE
         progress_bar.visibility = View.VISIBLE
-        authService.logIn(this, AuthService.LogInInput(
+        authService.logIn(this, UserApi.LogInInput(
                 username = username_input.text.toString(),
                 password = password_input.text.toString())
         ) {
@@ -75,12 +77,14 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun logInError(error: Failure) {
+        Log.i("test", "log in error")
         when (error) {
             is Failure.WrongCredentials -> Toast.makeText(
                     this,
-                    "use 'admin' (username) and 'admin' (password) as credentials",
+                    R.string.login_credential_error,
                     Toast.LENGTH_LONG
             ).show()
+            is Failure.NetworkConnection -> Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             else -> Toast.makeText(
                     this,
                     getString(R.string.unexpected_error),
@@ -89,7 +93,7 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun logInSuccess(success: AuthService.LogInResult) {
+    private fun logInSuccess(success: UserApi.AuthResult) {
         val intent = Intent(this, HomeActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)

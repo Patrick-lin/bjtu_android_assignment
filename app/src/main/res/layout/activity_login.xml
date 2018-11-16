@@ -62,6 +62,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/md_margin"
             android:gravity="center"
+            android:textColor="@color/colorPrimary"
             android:text="@string/to_register_button"
             />
     </RelativeLayout>
