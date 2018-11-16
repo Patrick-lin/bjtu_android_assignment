@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">Gym club</string>
 
-
     <string name="unexpected_error">An unexpected error happened</string>
     <string name="network_error">Connection error</string>
     <string name="login_credential_error">Invalid username or password</string>
+    <string name="username_already_used_error">Username already used</string>
+
     <string name="username_hint">Username</string>
     <string name="username_error">Invalid username</string>
     <string name="password_hint">Password</string>

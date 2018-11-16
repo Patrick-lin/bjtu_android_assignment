@@ -1,13 +1,10 @@
 package com.example.patricklin.gymclub.model
 
-import android.util.Log
 import com.example.patricklin.gymclub.core.Either
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.core.UseCase
-import kotlinx.coroutines.delay
 
 import com.example.patricklin.gymclub.model.UserApi.*
-import com.example.patricklin.gymclub.model.AuthService.*
 import java.lang.Exception
 
 class AuthServiceImpl(val userApi: UserApi) : AuthService {

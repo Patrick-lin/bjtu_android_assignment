@@ -83,6 +83,7 @@ class RegisterActivity : BaseActivity() {
 
     private fun registerError(error: Failure) {
         when (error) {
+            is Failure.UsernameAlreadyUsed -> Toast.makeText(this, R.string.username_already_used_error, Toast.LENGTH_LONG).show()
             else -> Toast.makeText(
                     this,
                     R.string.unexpected_error,
