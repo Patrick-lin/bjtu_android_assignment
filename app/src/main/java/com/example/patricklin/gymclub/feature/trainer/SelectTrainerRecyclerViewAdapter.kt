@@ -91,7 +91,7 @@ class SelectTrainerRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = trainers.size
-    override fun getItemId(position: Int): Long = trainers[position].id.toLong()
+    override fun getItemId(position: Int): Long = trainers[position].id.hashCode().toLong()
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.text_trainer_name

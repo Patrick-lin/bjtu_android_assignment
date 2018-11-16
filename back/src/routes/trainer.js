@@ -1,3 +1,5 @@
+import { isArray } from 'lodash'
+
 import { Trainers } from '../db';
 import authMiddleware from '../authMiddleware';
 
@@ -35,8 +37,9 @@ export default (app) => {
       });
     }
     console.log(req.query);
+    const { ids } = req.query;
     return res.send({
-      list: await Trainers.find(req.query.ids ? { _id: { $in: req.query.ids } } : {}),
+      list: await Trainers.find(ids ? { _id: { $in: isArray(ids) ? ids : [ids] } } : {}),
     });
   });
 

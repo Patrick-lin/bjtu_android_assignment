@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_class_item.view.*
 
 class ClassesRecyclerViewAdapter(
         private val fragment: Fragment,
-        private val classes: List<Class>,
+        private var classes: List<Class>,
         private val mListener: OnClassesFragmentInteractionListener?)
     : RecyclerView.Adapter<ClassesRecyclerViewAdapter.ViewHolder>() {
 
@@ -30,6 +30,10 @@ class ClassesRecyclerViewAdapter(
         }
     }
 
+    fun updateClasses(classes: List<Class>) {
+        this.classes = classes
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.fragment_class_item, parent, false)

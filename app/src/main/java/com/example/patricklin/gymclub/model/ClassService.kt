@@ -5,6 +5,6 @@ import android.arch.lifecycle.LiveData
 interface ClassService {
     fun getClasses(): LiveData<List<Class>>
 
-    fun getLiveClass(id: Int): LiveData<Class>
-    fun getClass(id: Int): Class?
+    fun getLiveClass(id: String): LiveData<Class>
+    fun getClass(id: String): Class?
 }

@@ -23,6 +23,9 @@ open class BaseActivity : AppCompatActivity(), CoroutineScope {
         job = Job()
     }
 
+    fun handleFailure(err: Failure) {
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         job.cancel() // Cancel job on activity destroy. After destroy all children jobs will be cancelled automatically

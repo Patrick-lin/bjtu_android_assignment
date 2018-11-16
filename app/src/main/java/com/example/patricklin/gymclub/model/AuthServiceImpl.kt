@@ -13,6 +13,7 @@ class AuthServiceImpl(val userApi: UserApi) : AuthService {
 
     override fun isLogged() = token != null
     override fun getToken(): String? = token
+    override fun getAuthHeader(): String = "TOKEN $token"
 
     override fun isValidUsername(username: String) = username.count() > 0
     override fun isValidPassword(password: String) = password.count() > 0

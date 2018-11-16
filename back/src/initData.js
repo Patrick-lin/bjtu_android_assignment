@@ -38,6 +38,7 @@ const createClass = ({
   type,
   title,
   availableTrainerIds,
+  rank,
 
   choosableTrainer = false,
   nbChoosableTrainer = 1,
@@ -49,7 +50,8 @@ const createClass = ({
   type,
   title,
   tagLine,
-
+  rank,
+  
   availableTrainerIds,
   choosableTrainer,
   nbChoosableTrainer,
@@ -70,12 +72,14 @@ const initClasses = async () => {
   return Classes.insert([
     createClass({
       type: PRIVATE_CLASS,
+      rank: 0,
       title: 'Private training',
       availableTrainerIds: trainers.map(toIds),
       choosableTrainer: true,
     }),
     createClass({
       type: GROUP_CLASS,
+      rank: 1,
       title: 'Cardio training',
       availableTrainerIds: trainers.map(toIds),
       choosableTrainer: true,
@@ -85,6 +89,7 @@ const initClasses = async () => {
     }),
     createClass({
       type: GROUP_CLASS,
+      rank: 2,
       title: 'Yoga training',
       availableTrainerIds: arrayElements(trainers, 2, toIds),
       maxPlaces: 50,
@@ -92,6 +97,7 @@ const initClasses = async () => {
     }),
     createClass({
       type: GROUP_CLASS,
+      rank: 3,
       title: 'Dance training',
       availableTrainerIds: arrayElements(trainers, 1, toIds),
       maxPlaces: 50,

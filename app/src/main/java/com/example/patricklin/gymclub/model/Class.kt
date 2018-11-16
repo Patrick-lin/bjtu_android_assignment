@@ -1,12 +1,9 @@
 package com.example.patricklin.gymclub.model
 
-enum class ClassType {
-    PRIVATE_CLASS,
-    GROUP_CLASS
-}
+import com.squareup.moshi.Json
 
 data class Class(
-        val id: Int,
+        @field:Json(name= "_id") val id: String,
         val type: String,
         val title: String,
         val tagLine: String,
@@ -16,7 +13,7 @@ data class Class(
         val maxPlaces: Int = 0,
         val takenPlaces: Int = 0,
 
-        val availableTrainerIds: List<Int> = emptyList(),
+        val availableTrainerIds: List<String> = emptyList(),
         val choosableTrainer: Boolean = false,
         val nbChoosableTrainer: Int = 0
 ) {

@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
+import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.feature.trainer.TrainerRecyclerViewAdapter
 import com.example.patricklin.gymclub.feature.trainer.TrainerSelectDialog
 import com.example.patricklin.gymclub.model.ClassService
@@ -43,12 +44,17 @@ class ClassDetailsActivity : BaseActivity() {
 
         select_trainers.setOnClickListener(::selectTrainerListener)
 
-        courses = classService.getClass(intent.getIntExtra(CLASS_ID, -1))?.also {
-            if (!it.choosableTrainer) {
-                selectedTrainers = trainerService.getTrainersListIn(it.availableTrainerIds)
+        courses = classService.getClass(intent.getStringExtra(CLASS_ID))?.also { c ->
+            if (!c.choosableTrainer) {
+                trainerService.getTrainersListIn(this, c.availableTrainerIds) {
+                    it.either(::handleFailure) { trainers ->
+                        selectedTrainers = trainers
+                        renderClassDetails(c)
+                    }
+                }
             }
-
-            renderClassDetails(it)
+        }?.apply {
+            renderClassDetails(this)
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -56,6 +62,7 @@ class ClassDetailsActivity : BaseActivity() {
         register_button.setOnClickListener {
             onBackPressed()
         }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -71,23 +78,28 @@ class ClassDetailsActivity : BaseActivity() {
 
             val context = this@ClassDetailsActivity
 
-            val trainers = trainerService.getTrainersListIn(availableTrainerIds)
-            if (trainers.isEmpty()) {
-                return@run
-            }
-
-            val dialog = TrainerSelectDialog.Builder(context)
-                    .apply {
-                        this.trainers = trainers
-                        nbSelectableTrainer = nbChoosableTrainer
-                        onPositiveClick = { selected, _, _ ->
-                            selectedTrainers = selected
-                            renderSelectedTrainers()
-                        }
+            spinner_select_trainers.visibility = View.VISIBLE
+            select_trainers.visibility = View.GONE
+            trainerService.getTrainersListIn(this@ClassDetailsActivity, availableTrainerIds) {
+                spinner_select_trainers.visibility = View.GONE
+                select_trainers.visibility = View.VISIBLE
+                it.either(::handleFailure) { trainers ->
+                    if (trainers.isNotEmpty()) {
+                        val dialog = TrainerSelectDialog.Builder(context)
+                                .apply {
+                                    this.trainers = trainers
+                                    nbSelectableTrainer = nbChoosableTrainer
+                                    onPositiveClick = { selected, _, _ ->
+                                        selectedTrainers = selected
+                                        renderSelectedTrainers()
+                                    }
+                                }
+                                .create()
+                        dialog.show()
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
                     }
-                    .create()
-            dialog.show()
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+                }
+            }
         }
     }
 
@@ -127,9 +139,9 @@ class ClassDetailsActivity : BaseActivity() {
     }
 
     companion object {
-        fun newBundle(id: Int): Bundle {
+        fun newBundle(id: String): Bundle {
             val bundle = Bundle()
-            bundle.putInt(CLASS_ID, id)
+            bundle.putString(CLASS_ID, id)
             return bundle
         }
     }

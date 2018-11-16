@@ -1,7 +1,9 @@
 package com.example.patricklin.gymclub.model
 
+import com.squareup.moshi.Json
+
 data class Trainer(
-        val id: Int,
+        @field:Json(name = "_id") val id: String,
         val firstName: String,
         val lastName: String,
         val age: Int,

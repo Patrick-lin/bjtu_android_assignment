@@ -1,10 +1,12 @@
 package com.example.patricklin.gymclub.feature.classes
 
+import android.arch.lifecycle.Observer
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +24,10 @@ import javax.inject.Inject
  */
 class ClassesFragment : BaseFragment() {
     private var columnCount = 1
-
     @Inject
     lateinit var classService: ClassService
 
+    private var classAdapter: ClassesRecyclerViewAdapter? = null
     private var listener: OnClassesFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,22 +37,31 @@ class ClassesFragment : BaseFragment() {
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
+
+        val classes = classService.getClasses()
+        classes.observe(this@ClassesFragment, Observer { classes ->
+            if (classes != null) {
+                classAdapter?.updateClasses(classes)
+            }
+        })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_classes_list, container, false)
-
         // Set the adapter
         if (view is RecyclerView) {
+            classAdapter = ClassesRecyclerViewAdapter(this@ClassesFragment, classService.getClasses().value.orEmpty(), listener)
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ClassesRecyclerViewAdapter(this@ClassesFragment, classService.getClasses().value.orEmpty(), listener)
+                adapter = classAdapter
             }
         }
+
+
         return view
     }
 

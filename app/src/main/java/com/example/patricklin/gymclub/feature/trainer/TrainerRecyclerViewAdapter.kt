@@ -33,7 +33,7 @@ class TrainerRecyclerViewAdapter(var trainers: List<Trainer>) : RecyclerView.Ada
     }
 
     override fun getItemCount(): Int = trainers.size
-    override fun getItemId(position: Int): Long = trainers[position].id.toLong()
+    override fun getItemId(position: Int): Long = trainers[position].id.hashCode().toLong()
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val cover: ImageView = view.image_trainer_avatar

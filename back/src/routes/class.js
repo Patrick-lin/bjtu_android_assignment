@@ -45,7 +45,7 @@ export default (app) => {
       });
     }
     return res.send({
-      list: await Classes.find({})
+      list: await Classes.find({}).sort({ rank: 1 })
     });
   });
 

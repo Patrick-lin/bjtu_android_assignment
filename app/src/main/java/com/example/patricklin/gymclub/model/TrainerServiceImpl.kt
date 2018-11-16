@@ -3,9 +3,14 @@ package com.example.patricklin.gymclub.model
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
+import android.util.Log
+import com.example.patricklin.gymclub.core.Either
+import com.example.patricklin.gymclub.core.Failure
+import com.example.patricklin.gymclub.core.UseCase
 
 import com.github.javafaker.Faker
-class TrainerServiceImpl : TrainerService {
+
+class TrainerServiceImpl(private val trainerApi: TrainerApi, private val authService: AuthService) : TrainerService {
     private val trainers = MutableLiveData<List<Trainer>>()
 
     init {
@@ -14,7 +19,7 @@ class TrainerServiceImpl : TrainerService {
         var counter = 0
 
         fun createTrainer() = Trainer(
-                id = counter++,
+                id = (counter++).toString(),
                 firstName = name.firstName(),
                 lastName = name.lastName(),
                 age = faker.number().numberBetween(20, 30),
@@ -32,17 +37,26 @@ class TrainerServiceImpl : TrainerService {
 
     override fun getTrainers(): LiveData<List<Trainer>> = trainers
 
-    override fun getTrainer(id: Int): LiveData<Trainer> = Transformations.map(trainers) {
+    override fun getTrainer(id: String): LiveData<Trainer> = Transformations.map(trainers) {
         it -> it.find { trainer -> trainer.id == id }
     }
 
-    override fun getTrainersIn(ids: Iterable<Int>): LiveData<List<Trainer>> = Transformations.map(trainers) {
+    override fun getTrainersIn(ids: Iterable<String>): LiveData<List<Trainer>> = Transformations.map(trainers) {
         it -> it.filter { trainer -> ids.find { id -> trainer.id == id } != null }
     }
-    override fun getTrainersListIn(ids: Iterable<Int>): List<Trainer> = trainers.value?.filter {
-        trainer -> ids.find { id -> trainer.id == id } != null
-    } ?: emptyList()
 
+    override val getTrainersListIn = object : UseCase<List<Trainer>, List<String>>() {
+        override suspend fun run(input: List<String>): Either<Failure, List<Trainer>> {
+            try {
+                val trainers = trainerApi.getTrainers(authService.getAuthHeader(), input).await()
+                return Either.Right(trainers.list)
+            } catch (err: Throwable) {
+                Log.d("test", "$err")
+                return Either.Left(Failure.detect(err))
+            }
+
+        }
+    }
 
     companion object {
         val avatars = listOf(
