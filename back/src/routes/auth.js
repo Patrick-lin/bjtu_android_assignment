@@ -1,8 +1,11 @@
+import { pick } from 'lodash';
+
+import authMiddleware from '../authMiddleware';
 import { Users } from '../db';
 
 export default (app) => {
   /**
-   * @api {get} /login Login
+   * @api {post} /login Login
    * @apiName login
    * @apiGroup auth
    *
@@ -16,10 +19,9 @@ export default (app) => {
    * @apiSuccess {String} message
    * @apiSuccess {String} token
    */
-  app.get('/login', async (req, res) => {
+  app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const user = await Users.findOne({ username, password });
-
     if (!user) {
       return res.send({
         success: false,
@@ -66,5 +68,25 @@ export default (app) => {
       message: 'register-success',
       token: user._id,
     });
+  });
+
+  /**
+   * @api {get} /user/me Get my account
+   * @apiVersion 0.0.0
+   * @apiName Me
+   * @apiGroup user
+   *
+   * @apiUse UserAuth
+   */
+  app.get('/user/me', authMiddleware(), async (req, res) => {
+      if (!req.user) {
+        return res.send({
+          error: 'not-authorized',
+        });
+      }
+
+      return res.send({
+        user: pick(req.user, ['username']),
+      });
   });
 }
