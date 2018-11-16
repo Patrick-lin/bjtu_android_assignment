@@ -1,6 +1,8 @@
 import 'babel-polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import cors from 'cors';
 
 import { loadDatabase, Users, Trainers, Classes } from './db';
 
@@ -14,9 +16,12 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(cors());
+app.use(morgan('common'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(bodyParser.json());
 
 addAuthRoutes(app);
 addTrainerRoutes(app);
