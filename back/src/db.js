@@ -12,9 +12,13 @@ export const Trainers = new Datastore({
   filename: './db/trainers',
 });
 
+export const News = new Datastore({
+  filename: './db/news',
+});
+
 export const loadDatabase = () => {
   const loadDb = db => new Promise(resolve => db.loadDatabase(resolve));
   return Promise.all(
-    [Users, Classes, Trainers].map(loadDb)
+    [Users, Classes, Trainers, News].map(loadDb)
   );
 };
