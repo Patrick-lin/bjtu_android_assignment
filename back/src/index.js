@@ -9,6 +9,7 @@ import { loadDatabase, Users, Trainers, Classes } from './db';
 import addAuthRoutes from './routes/auth';
 import addTrainerRoutes from './routes/trainer';
 import addClassRoutes from './routes/class';
+import addNewsRoute from './routes/news';
 
 import initDb from './initData';
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 addAuthRoutes(app);
 addTrainerRoutes(app);
 addClassRoutes(app);
+addNewsRoute(app);
 
 loadDatabase().then(async () => {
   if (!await Classes.count()) {
