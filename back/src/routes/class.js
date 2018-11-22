@@ -16,7 +16,7 @@ export default (app) => {
    * @api {get} /classes Class list
    * @apiVersion 0.0.0
    * @apiName GetClasses
-   * @apiGroup class
+   * @apiGroup Class
    *
    * @apiUse UserAuth
    *
@@ -53,7 +53,7 @@ export default (app) => {
    * @api {get} /class/:id Get class
    * @apiVersion 0.0.0
    * @apiName GetClass
-   * @apiGroup class
+   * @apiGroup Class
    *
    * @apiParam {String} id class's id
    *

@@ -7,7 +7,7 @@ export default (app) => {
   /**
    * @api {post} /login Login
    * @apiName login
-   * @apiGroup auth
+   * @apiGroup Auth
    *
    * @apiExample {curl} example :
    *    curl -X POST 0:3000/login -d "username=test" -d "password=test"
@@ -39,7 +39,7 @@ export default (app) => {
   /**
    * @api {post} /register Register
    * @apiName register
-   * @apiGroup auth
+   * @apiGroup Auth
    *
    * @apiExample {curl} example :
    *    curl -X POST 0:3000/register -d "username=test" -d "password=test"
@@ -74,7 +74,7 @@ export default (app) => {
    * @api {get} /user/me Get my account
    * @apiVersion 0.0.0
    * @apiName Me
-   * @apiGroup user
+   * @apiGroup User
    *
    * @apiUse UserAuth
    */

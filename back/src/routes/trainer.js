@@ -8,7 +8,7 @@ export default (app) => {
    * @api {get} /trainers Trainer list
    * @apiVersion 0.0.0
    * @apiName GetTrainers
-   * @apiGroup trainer
+   * @apiGroup Trainer
    *
    * @apiUse UserAuth
    *
@@ -47,7 +47,7 @@ export default (app) => {
    * @api {get} /trainer/:id Get trainer
    * @apiVersion 0.0.0
    * @apiName GetTrainer
-   * @apiGroup trainer
+   * @apiGroup Trainer
    *
    * @apiParam {String} id trainer's id
    *
