@@ -3,8 +3,9 @@ package com.example.patricklin.gymclub.model
 import com.example.patricklin.gymclub.core.Either
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.core.UseCase
+import com.example.patricklin.gymclub.model.user.UserApi
 
-import com.example.patricklin.gymclub.model.UserApi.*
+import com.example.patricklin.gymclub.model.user.UserApi.*
 import java.lang.Exception
 
 class AuthServiceImpl(val userApi: UserApi) : AuthService {

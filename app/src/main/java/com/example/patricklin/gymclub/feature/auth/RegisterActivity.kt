@@ -11,7 +11,7 @@ import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.feature.home.HomeActivity
 import com.example.patricklin.gymclub.model.AuthService
-import com.example.patricklin.gymclub.model.UserApi
+import com.example.patricklin.gymclub.model.user.UserApi
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 

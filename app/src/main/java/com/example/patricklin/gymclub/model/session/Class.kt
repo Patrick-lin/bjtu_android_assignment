@@ -1,4 +1,4 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.session
 
 import com.squareup.moshi.Json
 

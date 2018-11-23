@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
 
 
-import com.example.patricklin.gymclub.model.Trainer
+import com.example.patricklin.gymclub.model.trainer.Trainer
 import com.example.patricklin.gymclub.utils.CheckboxLifecycle
 
 import kotlinx.android.synthetic.main.fragment_select_trainer_item.view.*

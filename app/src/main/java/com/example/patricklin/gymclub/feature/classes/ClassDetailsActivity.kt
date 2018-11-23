@@ -8,13 +8,12 @@ import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
-import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.feature.trainer.TrainerRecyclerViewAdapter
 import com.example.patricklin.gymclub.feature.trainer.TrainerSelectDialog
-import com.example.patricklin.gymclub.model.ClassService
-import com.example.patricklin.gymclub.model.Class
-import com.example.patricklin.gymclub.model.Trainer
-import com.example.patricklin.gymclub.model.TrainerService
+import com.example.patricklin.gymclub.model.session.ClassService
+import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.trainer.Trainer
+import com.example.patricklin.gymclub.model.trainer.TrainerService
 import kotlinx.android.synthetic.main.activity_class_details.*
 import javax.inject.Inject
 

@@ -12,7 +12,7 @@ import com.example.patricklin.gymclub.R
 
 
 import com.example.patricklin.gymclub.feature.classes.ClassesFragment.OnClassesFragmentInteractionListener
-import com.example.patricklin.gymclub.model.Class
+import com.example.patricklin.gymclub.model.session.Class
 import kotlinx.android.synthetic.main.fragment_class_item.view.*
 
 class ClassesRecyclerViewAdapter(

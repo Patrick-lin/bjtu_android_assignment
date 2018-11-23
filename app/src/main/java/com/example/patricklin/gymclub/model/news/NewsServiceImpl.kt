@@ -1,9 +1,8 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.news
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
-import android.util.Log
 import com.github.javafaker.Faker
 import java.util.*
 

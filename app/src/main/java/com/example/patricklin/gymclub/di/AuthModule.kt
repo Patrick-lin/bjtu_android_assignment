@@ -2,7 +2,7 @@ package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.model.AuthService
 import com.example.patricklin.gymclub.model.AuthServiceImpl
-import com.example.patricklin.gymclub.model.UserApi
+import com.example.patricklin.gymclub.model.user.UserApi
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -1,4 +1,4 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.user
 
 import com.squareup.moshi.Json
 import kotlinx.coroutines.Deferred

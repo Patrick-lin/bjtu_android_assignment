@@ -14,8 +14,8 @@ import com.example.patricklin.gymclub.feature.classes.ClassesFragment
 import com.example.patricklin.gymclub.feature.news.NewsDetailsActivity
 import com.example.patricklin.gymclub.feature.settings.SettingsFragment
 import com.example.patricklin.gymclub.model.AuthService
-import com.example.patricklin.gymclub.model.Class
-import com.example.patricklin.gymclub.model.News
+import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.news.News
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 

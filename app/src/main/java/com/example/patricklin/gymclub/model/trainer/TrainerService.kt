@@ -1,7 +1,8 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.trainer
 
 import android.arch.lifecycle.LiveData
 import com.example.patricklin.gymclub.core.UseCase
+import com.example.patricklin.gymclub.model.trainer.Trainer
 
 interface TrainerService {
     fun getTrainers(): LiveData<List<Trainer>>

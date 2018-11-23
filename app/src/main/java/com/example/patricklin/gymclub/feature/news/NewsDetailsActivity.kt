@@ -1,15 +1,12 @@
 package com.example.patricklin.gymclub.feature.news
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
-import com.example.patricklin.gymclub.model.News
-import com.example.patricklin.gymclub.model.NewsService
+import com.example.patricklin.gymclub.model.news.News
+import com.example.patricklin.gymclub.model.news.NewsService
 import kotlinx.android.synthetic.main.activity_news_details.*
-import java.util.*
 import javax.inject.Inject
 
 private val NEWS_ID = "newsId"

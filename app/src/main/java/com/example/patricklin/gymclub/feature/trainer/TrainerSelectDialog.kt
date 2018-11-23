@@ -5,7 +5,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.example.patricklin.gymclub.model.Trainer
+import com.example.patricklin.gymclub.model.trainer.Trainer
 
 object TrainerSelectDialog {
     class Builder(val context: Activity) {

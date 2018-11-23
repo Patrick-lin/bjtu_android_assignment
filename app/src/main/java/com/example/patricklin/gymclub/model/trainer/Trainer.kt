@@ -1,4 +1,4 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.trainer
 
 import com.squareup.moshi.Json
 

@@ -1,9 +1,7 @@
 package com.example.patricklin.gymclub.feature.news
 
-import android.net.Uri
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +12,7 @@ import com.bumptech.glide.Glide
 
 import com.example.patricklin.gymclub.feature.news.NewsFragment.OnNewsInteraction
 import com.example.patricklin.gymclub.R
-import com.example.patricklin.gymclub.model.News
+import com.example.patricklin.gymclub.model.news.News
 
 import kotlinx.android.synthetic.main.fragment_news.view.*
 import java.text.SimpleDateFormat

@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseFragment
 
-import com.example.patricklin.gymclub.model.News
-import com.example.patricklin.gymclub.model.NewsService
+import com.example.patricklin.gymclub.model.news.News
+import com.example.patricklin.gymclub.model.news.NewsService
 import javax.inject.Inject
 
 /**

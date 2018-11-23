@@ -1,4 +1,4 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.trainer
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import android.util.Log
 import com.example.patricklin.gymclub.core.Either
 import com.example.patricklin.gymclub.core.Failure
 import com.example.patricklin.gymclub.core.UseCase
+import com.example.patricklin.gymclub.model.AuthService
 
 import com.github.javafaker.Faker
 

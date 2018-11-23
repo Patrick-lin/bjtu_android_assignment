@@ -6,15 +6,14 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseFragment
 
-import com.example.patricklin.gymclub.model.ClassService
-import com.example.patricklin.gymclub.model.Class
+import com.example.patricklin.gymclub.model.session.ClassService
+import com.example.patricklin.gymclub.model.session.Class
 import javax.inject.Inject
 
 /**

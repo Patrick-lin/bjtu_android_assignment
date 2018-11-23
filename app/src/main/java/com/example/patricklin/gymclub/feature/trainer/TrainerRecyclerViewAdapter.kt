@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
-import com.example.patricklin.gymclub.model.Trainer
+import com.example.patricklin.gymclub.model.trainer.Trainer
 import kotlinx.android.synthetic.main.fragment_trainer_item.view.*
 
 class TrainerRecyclerViewAdapter(var trainers: List<Trainer>) : RecyclerView.Adapter<TrainerRecyclerViewAdapter.ViewHolder>() {

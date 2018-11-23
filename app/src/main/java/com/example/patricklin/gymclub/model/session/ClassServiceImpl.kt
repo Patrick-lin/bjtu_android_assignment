@@ -1,9 +1,10 @@
-package com.example.patricklin.gymclub.model
+package com.example.patricklin.gymclub.model.session
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.util.Log
+import com.example.patricklin.gymclub.model.AuthService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

@@ -1,9 +1,9 @@
 package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.BuildConfig
-import com.example.patricklin.gymclub.model.ClassApi
-import com.example.patricklin.gymclub.model.TrainerApi
-import com.example.patricklin.gymclub.model.UserApi
+import com.example.patricklin.gymclub.model.session.ClassApi
+import com.example.patricklin.gymclub.model.trainer.TrainerApi
+import com.example.patricklin.gymclub.model.user.UserApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides

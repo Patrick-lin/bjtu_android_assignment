@@ -1,6 +1,7 @@
 package com.example.patricklin.gymclub.model
 
 import com.example.patricklin.gymclub.core.UseCase
+import com.example.patricklin.gymclub.model.user.UserApi
 
 interface AuthService {
     fun isLogged(): Boolean
