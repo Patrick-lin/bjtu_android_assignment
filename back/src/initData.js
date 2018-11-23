@@ -137,8 +137,8 @@ function* makeDateGenerator() {
   yield date;
 
   while (true) {
-    date -= faker.random.number({ min: 6, max: 96 }) * 60 * 60 * 1000,
-    yield date
+    date = new Date(date.valueOf() - faker.random.number({ min: 6, max: 96 }) * 60 * 60 * 1000),
+    yield date;
   }
 }
 
