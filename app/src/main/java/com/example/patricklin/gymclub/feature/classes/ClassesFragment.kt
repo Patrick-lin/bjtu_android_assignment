@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseFragment
 
-import com.example.patricklin.gymclub.model.session.ClassService
-import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.session.SessionService
+import com.example.patricklin.gymclub.model.session.Session
 import javax.inject.Inject
 
 /**
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class ClassesFragment : BaseFragment() {
     private var columnCount = 1
     @Inject
-    lateinit var classService: ClassService
+    lateinit var sessionService: SessionService
 
     private var classAdapter: ClassesRecyclerViewAdapter? = null
     private var listener: OnClassesFragmentInteractionListener? = null
@@ -37,10 +37,10 @@ class ClassesFragment : BaseFragment() {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
 
-        val classes = classService.getClasses()
-        classes.observe(this@ClassesFragment, Observer { classes ->
-            if (classes != null) {
-                classAdapter?.updateClasses(classes)
+
+        sessionService.getSessions().observe(this@ClassesFragment, Observer { sessions ->
+            if (sessions != null) {
+                classAdapter?.updateClasses(sessions)
             }
         })
     }
@@ -50,7 +50,7 @@ class ClassesFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_classes_list, container, false)
         // Set the adapter
         if (view is RecyclerView) {
-            classAdapter = ClassesRecyclerViewAdapter(this@ClassesFragment, classService.getClasses().value.orEmpty(), listener)
+            classAdapter = ClassesRecyclerViewAdapter(this@ClassesFragment, sessionService.getSessions().value.orEmpty(), listener)
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
@@ -90,7 +90,7 @@ class ClassesFragment : BaseFragment() {
      * for more information.
      */
     interface OnClassesFragmentInteractionListener {
-        fun onClassSelect(item: Class?)
+        fun onClassSelect(item: Session?)
     }
 
     companion object {

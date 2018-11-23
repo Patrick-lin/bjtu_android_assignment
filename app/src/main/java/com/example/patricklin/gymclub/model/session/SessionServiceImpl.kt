@@ -8,25 +8,25 @@ import com.example.patricklin.gymclub.model.AuthService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class ClassServiceImpl(private val classApi: ClassApi, private val authService: AuthService) : ClassService {
-    private val classes = MutableLiveData<List<Class>>()
+class SessionServiceImpl(private val sessionApi: SessionApi, private val authService: AuthService) : SessionService {
+    private val classes = MutableLiveData<List<Session>>()
 
-    override fun getClasses(): LiveData<List<Class>> {
+    override fun getSessions(): LiveData<List<Session>> {
         GlobalScope.launch {
             try {
-                val res = classApi.getClasses(authService.getAuthHeader()).await()
+                val res = sessionApi.getSessions(authService.getAuthHeader()).await()
                 Log.i("test", "update classes from api")
                 classes.postValue(res.list)
             } catch (err: Throwable) {
-                Log.d("classApi", "$err")
+                Log.d("sessionApi", "$err")
             }
         }
         return classes
     }
 
-    override fun getLiveClass(id: String): LiveData<Class> = Transformations.map(classes) {
+    override fun getLiveSession(id: String): LiveData<Session> = Transformations.map(classes) {
         it.find { c -> c.id == id }
     }
 
-    override fun getClass(id: String): Class? = classes.value.orEmpty().find { c -> c.id == id }
+    override fun getSession(id: String): Session? = classes.value.orEmpty().find { c -> c.id == id }
 }

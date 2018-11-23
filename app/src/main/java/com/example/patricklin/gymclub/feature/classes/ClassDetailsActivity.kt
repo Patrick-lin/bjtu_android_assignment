@@ -10,8 +10,8 @@ import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.feature.trainer.TrainerRecyclerViewAdapter
 import com.example.patricklin.gymclub.feature.trainer.TrainerSelectDialog
-import com.example.patricklin.gymclub.model.session.ClassService
-import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.session.SessionService
+import com.example.patricklin.gymclub.model.session.Session
 import com.example.patricklin.gymclub.model.trainer.Trainer
 import com.example.patricklin.gymclub.model.trainer.TrainerService
 import kotlinx.android.synthetic.main.activity_class_details.*
@@ -21,14 +21,13 @@ private const val CLASS_ID = "classId"
 
 class ClassDetailsActivity : BaseActivity() {
     @Inject
-    lateinit var classService: ClassService
+    lateinit var sessionService: SessionService
     @Inject
     lateinit var trainerService: TrainerService
 
-    private var courses: Class? = null
+    private var courses: Session? = null
     private var selectedTrainersAdapter: TrainerRecyclerViewAdapter? = null
     private var selectedTrainers: List<Trainer>? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +42,7 @@ class ClassDetailsActivity : BaseActivity() {
 
         select_trainers.setOnClickListener(::selectTrainerListener)
 
-        courses = classService.getClass(intent.getStringExtra(CLASS_ID))?.also { c ->
+        courses = sessionService.getSession(intent.getStringExtra(CLASS_ID))?.also { c ->
             if (!c.choosableTrainer) {
                 trainerService.getTrainersListIn(this, c.availableTrainerIds) {
                     it.either(::handleFailure) { trainers ->
@@ -102,7 +101,7 @@ class ClassDetailsActivity : BaseActivity() {
         }
     }
 
-    private fun renderClassDetails(c: Class) {
+    private fun renderClassDetails(c: Session) {
         title = c.title
         text_class_details_tagLine.text = c.tagLine
 

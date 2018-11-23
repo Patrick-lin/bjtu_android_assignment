@@ -4,11 +4,11 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Header
 
-interface ClassApi {
-    data class GetClassResult(
-            val list: List<Class>,
+interface SessionApi {
+    data class GetSessionsResult(
+            val list: List<Session>,
             val error: String?
     )
     @GET("/classes")
-    fun getClasses(@Header("authorization") token: String): Deferred<GetClassResult>
+    fun getSessions(@Header("authorization") token: String): Deferred<GetSessionsResult>
 }

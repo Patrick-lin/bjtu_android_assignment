@@ -1,7 +1,7 @@
 package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.BuildConfig
-import com.example.patricklin.gymclub.model.session.ClassApi
+import com.example.patricklin.gymclub.model.session.SessionApi
 import com.example.patricklin.gymclub.model.trainer.TrainerApi
 import com.example.patricklin.gymclub.model.user.UserApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -25,7 +25,7 @@ class BackApiModule {
 
     @Provides
     @Singleton
-    fun provideClassApi(): ClassApi = api.create(ClassApi::class.java)
+    fun provideClassApi(): SessionApi = api.create(SessionApi::class.java)
 
     @Provides
     @Singleton

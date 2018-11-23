@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".feature.classes.ClassDetailsActivity"
+            android:name=".feature.sessions.ClassDetailsActivity"
             android:label="@string/title_activity_class_details"
             android:theme="@style/AppTheme">
         </activity>

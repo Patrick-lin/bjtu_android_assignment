@@ -2,7 +2,7 @@ package com.example.patricklin.gymclub.model.session
 
 import com.squareup.moshi.Json
 
-data class Class(
+data class Session(
         @field:Json(name= "_id") val id: String,
         val type: String,
         val title: String,

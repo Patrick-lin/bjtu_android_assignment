@@ -12,12 +12,12 @@ import com.example.patricklin.gymclub.R
 
 
 import com.example.patricklin.gymclub.feature.classes.ClassesFragment.OnClassesFragmentInteractionListener
-import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.session.Session
 import kotlinx.android.synthetic.main.fragment_class_item.view.*
 
 class ClassesRecyclerViewAdapter(
         private val fragment: Fragment,
-        private var classes: List<Class>,
+        private var sessions: List<Session>,
         private val mListener: OnClassesFragmentInteractionListener?)
     : RecyclerView.Adapter<ClassesRecyclerViewAdapter.ViewHolder>() {
 
@@ -25,13 +25,13 @@ class ClassesRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Class
+            val item = v.tag as Session
             mListener?.onClassSelect(item)
         }
     }
 
-    fun updateClasses(classes: List<Class>) {
-        this.classes = classes
+    fun updateClasses(sessions: List<Session>) {
+        this.sessions = sessions
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +41,7 @@ class ClassesRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = classes[position]
+        val item = sessions[position]
         holder.title.text = item.title
         holder.tagLine.text = item.tagLine
 
@@ -62,7 +62,7 @@ class ClassesRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = classes.size
+    override fun getItemCount(): Int = sessions.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val title: TextView = mView.text_title

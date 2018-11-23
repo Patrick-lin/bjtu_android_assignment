@@ -14,7 +14,7 @@ import com.example.patricklin.gymclub.feature.classes.ClassesFragment
 import com.example.patricklin.gymclub.feature.news.NewsDetailsActivity
 import com.example.patricklin.gymclub.feature.settings.SettingsFragment
 import com.example.patricklin.gymclub.model.AuthService
-import com.example.patricklin.gymclub.model.session.Class
+import com.example.patricklin.gymclub.model.session.Session
 import com.example.patricklin.gymclub.model.news.News
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
@@ -69,7 +69,7 @@ class HomeActivity : BaseActivity(), NewsFragment.OnNewsInteraction, SettingsFra
         }
     }
 
-    override fun onClassSelect(item: Class?) {
+    override fun onClassSelect(item: Session?) {
         if (item != null) {
             val intent = Intent(this, ClassDetailsActivity::class.java)
             intent.putExtras(ClassDetailsActivity.newBundle(item.id))

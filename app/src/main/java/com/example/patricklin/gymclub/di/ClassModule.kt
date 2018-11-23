@@ -1,9 +1,9 @@
 package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.model.*
-import com.example.patricklin.gymclub.model.session.ClassApi
-import com.example.patricklin.gymclub.model.session.ClassService
-import com.example.patricklin.gymclub.model.session.ClassServiceImpl
+import com.example.patricklin.gymclub.model.session.SessionApi
+import com.example.patricklin.gymclub.model.session.SessionService
+import com.example.patricklin.gymclub.model.session.SessionServiceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,5 +12,5 @@ import javax.inject.Singleton
 class ClassModule {
     @Provides
     @Singleton
-    fun provideClassService(classApi: ClassApi, authService: AuthService): ClassService = ClassServiceImpl(classApi, authService)
+    fun provideClassService(sessionApi: SessionApi, authService: AuthService): SessionService = SessionServiceImpl(sessionApi, authService)
 }
