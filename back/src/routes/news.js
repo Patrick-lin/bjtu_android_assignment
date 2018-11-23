@@ -1,4 +1,4 @@
-import { take, last } from 'lodash';
+import { take, last, isNumber } from 'lodash';
 import { News } from '../db';
 
 export default (app) => {
@@ -30,15 +30,20 @@ export default (app) => {
     const { limit = 20, cursor } = req.query;
 
     const query = {}
-
     if (cursor) {
-      query.date = { $gt: new Date(Number(cursor)) };
+      query.date = { $lt: new Date(cursor) };
+    }
+    let news = await News.find(query).sort({ date: -1 });
+
+    let left = false;
+    if (news.length > limit) {
+      left = true;
+      news = take(news, limit);
     }
 
-    const news = await News.find(query).sort({ date: -1 }).limit(limit + 1);
     return res.send({
-      list: news.length <= limit ? news : take(news, limit),
-      cursor: news.length <= limit ? null : last(news).date,
+      list: news,
+      cursor: left ? last(news).date.toString() : null,
     });
   });
 }
