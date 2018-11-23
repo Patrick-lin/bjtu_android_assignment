@@ -1,5 +1,6 @@
 package com.example.patricklin.gymclub.feature.news
 
+import android.arch.lifecycle.Observer
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -13,19 +14,15 @@ import com.example.patricklin.gymclub.core.BaseFragment
 
 import com.example.patricklin.gymclub.model.news.News
 import com.example.patricklin.gymclub.model.news.NewsService
+import com.example.patricklin.gymclub.utils.InfiniteRecyclerViewScroll
 import javax.inject.Inject
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [NewsFragment.OnNewsInteraction] interface.
- */
 class NewsFragment : BaseFragment() {
-
-    // TODO: Customize parameters
     private var columnCount = 1
 
     private var listener: OnNewsInteraction? = null
+    private var newsAdapter: NewsCardRecyclerViewAdapter? = null
+    private var cursor: String? = null
 
     @Inject
     lateinit var newsService: NewsService
@@ -33,26 +30,37 @@ class NewsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_news_list, container, false)
 
+
+        val newsLiveData = newsService.getNewsList()
+
         // Set the adapter
         if (view is RecyclerView) {
+            newsAdapter = NewsCardRecyclerViewAdapter(this@NewsFragment, newsLiveData.value.orEmpty(), listener)
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = NewsCardRecyclerViewAdapter(this@NewsFragment, newsService.getNewsList().value.orEmpty(), listener)
+                adapter = newsAdapter
+                addOnScrollListener(object : InfiniteRecyclerViewScroll() {
+                    override fun onLoadMore() {
+                        newsService.loadMore()
+                    }
+                })
             }
         }
+
+        newsLiveData.observe(this, Observer {
+            newsAdapter?.updateNews(it.orEmpty())
+        })
+
+        newsService.refreshNewsList()
         return view
     }
 
@@ -71,22 +79,6 @@ class NewsFragment : BaseFragment() {
     }
 
     interface OnNewsInteraction {
-        // TODO: Update argument type and name
         fun onNewsInteraction(item: News?)
-    }
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-                NewsFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
-                }
     }
 }

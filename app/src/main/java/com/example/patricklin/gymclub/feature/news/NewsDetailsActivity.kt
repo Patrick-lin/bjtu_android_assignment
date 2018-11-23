@@ -23,7 +23,7 @@ class NewsDetailsActivity : BaseActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        newsService.getNews(intent.getIntExtra(NEWS_ID, -1)).observe(this, android.arch.lifecycle.Observer {
+        newsService.getNews(intent.getStringExtra(NEWS_ID)).observe(this, android.arch.lifecycle.Observer {
             if (it !== null) {
                 renderNews(it)
             }
@@ -44,9 +44,9 @@ class NewsDetailsActivity : BaseActivity() {
     }
 
     companion object {
-        fun newBundle(newsId: Int): Bundle {
+        fun newBundle(newsId: String): Bundle {
             val bundle = Bundle()
-            bundle.putInt(NEWS_ID, newsId)
+            bundle.putString(NEWS_ID, newsId)
             return bundle
         }
     }

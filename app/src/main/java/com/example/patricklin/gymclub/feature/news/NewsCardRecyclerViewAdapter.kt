@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat
  */
 class NewsCardRecyclerViewAdapter(
         private val fragment: Fragment,
-        private val news: List<News>,
+        private var news: List<News>,
         private val mListener: OnNewsInteraction?)
     : RecyclerView.Adapter<NewsCardRecyclerViewAdapter.ViewHolder>() {
 
@@ -35,6 +35,11 @@ class NewsCardRecyclerViewAdapter(
             val item = v.tag as News
             mListener?.onNewsInteraction(item)
         }
+    }
+
+    fun updateNews(news: List<News>) {
+        this.news = news
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
