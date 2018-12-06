@@ -36,7 +36,7 @@ export default (app) => {
         error: 'not-authorized',
       });
     }
-    console.log(req.query);
+
     const { ids } = req.query;
     return res.send({
       list: await Trainers.find(ids ? { _id: { $in: isArray(ids) ? ids : [ids] } } : {}),

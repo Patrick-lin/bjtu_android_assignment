@@ -5,6 +5,7 @@ import com.example.patricklin.gymclub.model.news.NewsApi
 import com.example.patricklin.gymclub.model.session.SessionApi
 import com.example.patricklin.gymclub.model.trainer.TrainerApi
 import com.example.patricklin.gymclub.model.user.UserApi
+import com.example.patricklin.gymclub.model.video.VideoApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -43,4 +44,8 @@ class BackApiModule {
     @Provides
     @Singleton
     fun provideNewsApi(): NewsApi = api.create(NewsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideVideoApi(): VideoApi = api.create(VideoApi::class.java)
 }

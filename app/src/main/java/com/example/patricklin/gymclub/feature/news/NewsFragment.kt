@@ -36,7 +36,6 @@ class NewsFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_news_list, container, false)
 
-
         val newsLiveData = newsService.getNewsList()
 
         // Set the adapter

@@ -10,6 +10,7 @@ import addAuthRoutes from './routes/auth';
 import addTrainerRoutes from './routes/trainer';
 import addClassRoutes from './routes/class';
 import addNewsRoute from './routes/news';
+import addVideoRoute from './routes/video';
 
 import initDb from './initData';
 
@@ -28,11 +29,10 @@ addAuthRoutes(app);
 addTrainerRoutes(app);
 addClassRoutes(app);
 addNewsRoute(app);
+addVideoRoute(app);
 
 loadDatabase().then(async () => {
-  if (!await Classes.count()) {
-    initDb();
-  }
+  initDb();
 }).catch(err => {
   console.error(err);
 });

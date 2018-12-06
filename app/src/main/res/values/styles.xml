@@ -40,30 +40,36 @@
         <item name="newsCardTagLineStyle">@style/NewsCardTagLine</item>
         <item name="newsCardDateStyle">@style/NewsCardDate</item>
     </style>
+
     <style name="CardContainer">
         <item name="android:padding">@dimen/l_margin</item>
         <item name="android:layout_height">192dp</item>
     </style>
+
     <style name="CardCover">
         <item name="android:scaleType">centerCrop</item>
     </style>
+
     <style name="CardSeparator">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
     </style>
+
     <style name="NewsCardTitle">
         <item name="android:textSize">@dimen/md_text</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
     <style name="NewsCardTagLine">
         <item name="android:layout_marginTop">@dimen/md_margin</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
     </style>
+
     <style name="NewsCardDate">
         <item name="android:layout_marginLeft">@dimen/l_margin</item>
         <item name="android:layout_marginTop">@dimen/l_margin</item>
@@ -75,26 +81,36 @@
         <item name="newsCoverStyle">@style/NewsDetailsCover</item>
         <item name="newsDetailsText">@style/NewsDetailsText</item>
     </style>
+
     <style name="NewsDetailsTitle">
         <item name="android:textSize">@dimen/l_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginTop">@dimen/md_margin</item>
     </style>
+
     <style name="NewsDetailsCover">
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginLeft">@dimen/md_margin</item>
         <item name="android:layout_marginRight">@dimen/md_margin</item>
     </style>
+
     <style name="NewsDetailsText">
         <item name="android:layout_marginLeft">@dimen/md_margin</item>
         <item name="android:layout_marginRight">@dimen/md_margin</item>
     </style>
 
-    <style name="ClassCard" parent="AppTheme">
+    <style name="ClassCard" parent="AppTheme"></style>
+
+    <style name="ClassDetails" parent="AppTheme"></style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="ClassDetails" parent="AppTheme">
-    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

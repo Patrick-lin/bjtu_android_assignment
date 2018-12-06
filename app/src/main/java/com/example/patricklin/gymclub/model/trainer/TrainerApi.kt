@@ -10,6 +10,7 @@ interface TrainerApi {
             val list: List<Trainer>,
             val error: String?
     )
+
     @GET("/trainers")
     fun getTrainers(
             @Header("authorization") token: String,

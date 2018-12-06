@@ -15,7 +15,6 @@ class SessionServiceImpl(private val sessionApi: SessionApi, private val authSer
         GlobalScope.launch {
             try {
                 val res = sessionApi.getSessions(authService.getAuthHeader()).await()
-                Log.i("test", "update classes from api")
                 classes.postValue(res.list)
             } catch (err: Throwable) {
                 Log.d("sessionApi", "$err")

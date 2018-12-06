@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-import { Trainers, Classes, News } from './db';
+import { Settings, Trainers, Classes, News } from './db';
 import { arrayElements } from './utils';
 
 const createTrainer = () => ({
@@ -148,7 +148,6 @@ const createNewsBatch = (nb) => {
   for (let i = 0; i < nb; i++) {
     res.unshift(createNews({ date: dateGenerator.next().value }));
   }
-  console.log(res);
   return res;
 }
 
@@ -156,8 +155,44 @@ const initNews = () => {
   return News.insert(createNewsBatch(120));
 }
 
+/**
+ * version data inition
+ * @param {Object} arg
+ * @param {Number} arg.version
+ * @param {String} arg.key
+ * @param {Function} arg.initData
+ */
+const versioning = async ({
+  version,
+  key = '',
+  collection,
+  initData,
+}) => {
+  const setting = await Settings.findOne({ key });
+  if (!version || !setting || setting.version < version) {
+    await collection.remove({}, { multi: true });
+    await Settings.update({ key }, { key, version }, { upsert: true });
+    return initData();
+  }
+}
+
 export default async () => {
-  await initTrainers();
-  await initClasses();
-  await initNews();
+  await versioning({
+    version: 1,
+    key: 'trainers',
+    collection: Trainers,
+    initData: initTrainers,
+  });
+  await versioning({
+    version: 1,
+    key: 'classes',
+    collection: Classes,
+    initData: initClasses,
+  });
+  await versioning({
+    version: 1,
+    key: 'news',
+    collection: News,
+    initData: initNews,
+  });
 }

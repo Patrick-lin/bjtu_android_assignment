@@ -9,17 +9,25 @@ import com.example.patricklin.gymclub.feature.news.NewsFragment
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.feature.auth.LoginActivity
-import com.example.patricklin.gymclub.feature.classes.ClassDetailsActivity
-import com.example.patricklin.gymclub.feature.classes.ClassesFragment
+import com.example.patricklin.gymclub.feature.session.ClassDetailsActivity
+import com.example.patricklin.gymclub.feature.session.ClassesFragment
 import com.example.patricklin.gymclub.feature.news.NewsDetailsActivity
 import com.example.patricklin.gymclub.feature.settings.SettingsFragment
+import com.example.patricklin.gymclub.feature.video.VideoActivity
+import com.example.patricklin.gymclub.feature.video.VideoListFragment
+import com.example.patricklin.gymclub.feature.video.VideoRecyclerViewAdapter
 import com.example.patricklin.gymclub.model.AuthService
 import com.example.patricklin.gymclub.model.session.Session
 import com.example.patricklin.gymclub.model.news.News
+import com.example.patricklin.gymclub.model.video.VideoDescription
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-class HomeActivity : BaseActivity(), NewsFragment.OnNewsInteraction, SettingsFragment.OnSettingsListener, ClassesFragment.OnClassesFragmentInteractionListener {
+class HomeActivity : BaseActivity(),
+        NewsFragment.OnNewsInteraction,
+        SettingsFragment.OnSettingsListener,
+        ClassesFragment.OnClassesFragmentInteractionListener,
+        VideoListFragment.OnVideoListInteractionListener {
     @Inject
     lateinit var authService: AuthService
 
@@ -83,4 +91,11 @@ class HomeActivity : BaseActivity(), NewsFragment.OnNewsInteraction, SettingsFra
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
+
+    override fun onVideoClick(video: VideoDescription) {
+        val intent = Intent(this, VideoActivity::class.java)
+        intent.putExtras(VideoActivity.newBundle(video.id))
+        startActivity(intent)
+    }
 }
+
