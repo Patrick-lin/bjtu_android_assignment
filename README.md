@@ -1,3 +1,10 @@
 # bjtu_android_assignment
 
-To log in use 'admin' as username and 'admin' as password 
+### Assignments
+
+1: `git checkout assignment-1`
+
+2: `git checkout master`
+
+### To start server
+`cd back && yarn launch`
