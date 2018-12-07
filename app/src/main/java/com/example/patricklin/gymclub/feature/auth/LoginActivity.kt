@@ -77,7 +77,6 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun logInError(error: Failure) {
-        Log.i("test", "log in error")
         when (error) {
             is Failure.WrongCredentials -> Toast.makeText(
                     this,

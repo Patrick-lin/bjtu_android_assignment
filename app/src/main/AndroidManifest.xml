@@ -39,12 +39,16 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".feature.news.NewsDetailsActivity" />
         <activity
-            android:name=".feature.session.ClassDetailsActivity"
+            android:name=".feature.session.SessionDetailsActivity"
             android:label="@string/title_activity_class_details"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".feature.video.VideoActivity"
             android:label="@string/title_activity_video"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.trainer.TrainerDetailActivity"
+            android:label="@string/title_activity_trainer_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

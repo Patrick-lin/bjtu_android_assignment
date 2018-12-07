@@ -9,13 +9,12 @@ import com.example.patricklin.gymclub.feature.news.NewsFragment
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.feature.auth.LoginActivity
-import com.example.patricklin.gymclub.feature.session.ClassDetailsActivity
-import com.example.patricklin.gymclub.feature.session.ClassesFragment
+import com.example.patricklin.gymclub.feature.session.SessionDetailsActivity
+import com.example.patricklin.gymclub.feature.session.SessionsFragment
 import com.example.patricklin.gymclub.feature.news.NewsDetailsActivity
 import com.example.patricklin.gymclub.feature.settings.SettingsFragment
 import com.example.patricklin.gymclub.feature.video.VideoActivity
 import com.example.patricklin.gymclub.feature.video.VideoListFragment
-import com.example.patricklin.gymclub.feature.video.VideoRecyclerViewAdapter
 import com.example.patricklin.gymclub.model.AuthService
 import com.example.patricklin.gymclub.model.session.Session
 import com.example.patricklin.gymclub.model.news.News
@@ -26,7 +25,7 @@ import javax.inject.Inject
 class HomeActivity : BaseActivity(),
         NewsFragment.OnNewsInteraction,
         SettingsFragment.OnSettingsListener,
-        ClassesFragment.OnClassesFragmentInteractionListener,
+        SessionsFragment.OnClassesFragmentInteractionListener,
         VideoListFragment.OnVideoListInteractionListener {
     @Inject
     lateinit var authService: AuthService
@@ -79,8 +78,8 @@ class HomeActivity : BaseActivity(),
 
     override fun onClassSelect(item: Session?) {
         if (item != null) {
-            val intent = Intent(this, ClassDetailsActivity::class.java)
-            intent.putExtras(ClassDetailsActivity.newBundle(item.id))
+            val intent = Intent(this, SessionDetailsActivity::class.java)
+            intent.putExtras(SessionDetailsActivity.newBundle(item.id))
             startActivityForResult(intent, 123)
         }
     }

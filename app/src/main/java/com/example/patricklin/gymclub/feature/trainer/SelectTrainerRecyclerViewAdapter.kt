@@ -47,7 +47,6 @@ class SelectTrainerRecyclerViewAdapter(
     init {
         with (checkboxLifecyle) {
            onItemToggle = { view, item, state ->
-                Log.i("test", "$state")
                view.checkBox.isChecked = state
            }
            onMaxTargetCheckedListener = {

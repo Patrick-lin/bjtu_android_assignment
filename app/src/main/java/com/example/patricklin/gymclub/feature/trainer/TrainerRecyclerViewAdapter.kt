@@ -11,7 +11,11 @@ import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.model.trainer.Trainer
 import kotlinx.android.synthetic.main.fragment_trainer_item.view.*
 
-class TrainerRecyclerViewAdapter(var trainers: List<Trainer>) : RecyclerView.Adapter<TrainerRecyclerViewAdapter.ViewHolder>() {
+class TrainerRecyclerViewAdapter(var trainers: List<Trainer>, val listener: OnTrainerInteraction? = null) : RecyclerView.Adapter<TrainerRecyclerViewAdapter.ViewHolder>() {
+    private val onClickListener = View.OnClickListener {
+        val item = it.tag as Trainer
+        listener?.onTrainerSelect(item)
+    }
 
     init {
         setHasStableIds(true)
@@ -30,6 +34,10 @@ class TrainerRecyclerViewAdapter(var trainers: List<Trainer>) : RecyclerView.Ada
             Glide.with(holder.view).load(item.cover).into(holder.cover)
         }
         holder.name.text = item.fullName
+        holder.view.apply {
+            tag = item
+            setOnClickListener(onClickListener)
+        }
     }
 
     override fun getItemCount(): Int = trainers.size
@@ -38,5 +46,9 @@ class TrainerRecyclerViewAdapter(var trainers: List<Trainer>) : RecyclerView.Ada
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val cover: ImageView = view.image_trainer_avatar
         val name: TextView = view.text_trainer_name
+    }
+
+    interface OnTrainerInteraction {
+        fun onTrainerSelect(trainer: Trainer)
     }
 }

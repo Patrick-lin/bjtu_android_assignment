@@ -4,11 +4,12 @@ import com.example.patricklin.gymclub.GymClubApp
 import com.example.patricklin.gymclub.feature.auth.LoginActivity
 import com.example.patricklin.gymclub.feature.auth.RegisterActivity
 import com.example.patricklin.gymclub.StartActivity
-import com.example.patricklin.gymclub.feature.session.ClassDetailsActivity
-import com.example.patricklin.gymclub.feature.session.ClassesFragment
+import com.example.patricklin.gymclub.feature.session.SessionDetailsActivity
+import com.example.patricklin.gymclub.feature.session.SessionsFragment
 import com.example.patricklin.gymclub.feature.home.HomeActivity
 import com.example.patricklin.gymclub.feature.news.NewsDetailsActivity
 import com.example.patricklin.gymclub.feature.news.NewsFragment
+import com.example.patricklin.gymclub.feature.trainer.TrainerDetailActivity
 import com.example.patricklin.gymclub.feature.video.VideoActivity
 import com.example.patricklin.gymclub.feature.video.VideoListFragment
 import dagger.Component
@@ -22,7 +23,8 @@ import javax.inject.Singleton
     ClassModule::class,
     TrainerModule::class,
     VideoModule::class,
-    BackApiModule::class
+    BackApiModule::class,
+    DbModule::class
 ])
 interface AppComponent {
     fun inject(app: GymClubApp)
@@ -37,9 +39,11 @@ interface AppComponent {
     fun inject(fragment: NewsFragment)
     fun inject(activity: NewsDetailsActivity)
 
-    fun inject(fragment: ClassesFragment)
-    fun inject(activity: ClassDetailsActivity)
+    fun inject(fragment: SessionsFragment)
+    fun inject(activity: SessionDetailsActivity)
 
     fun inject(fragment: VideoListFragment)
     fun inject(activity: VideoActivity)
+
+    fun inject(activity: TrainerDetailActivity)
 }
