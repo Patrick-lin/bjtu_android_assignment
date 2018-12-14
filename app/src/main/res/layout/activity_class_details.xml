@@ -64,6 +64,12 @@
                 android:layout_gravity="center_horizontal"/>
 
             <Button
+                android:id="@+id/map_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_open_map" />
+
+            <Button
                 android:id="@+id/register_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

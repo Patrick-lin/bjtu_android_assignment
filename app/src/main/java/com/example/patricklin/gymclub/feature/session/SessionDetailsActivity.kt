@@ -2,6 +2,7 @@ package com.example.patricklin.gymclub.feature.session
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -64,6 +65,13 @@ class SessionDetailsActivity : BaseActivity(), TrainerRecyclerViewAdapter.OnTrai
             onBackPressed()
         }
 
+        map_button.setOnClickListener {
+            val lat = 46.414382
+            val lng = 10.013988
+            val gmmIntentUri = Uri.parse("geo:$lat,$lng?q=$lat,$lng(Gym)&${lat + 0.001},$lng(Gym 2")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(mapIntent)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

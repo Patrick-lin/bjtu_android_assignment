@@ -30,7 +30,8 @@
     <string name="button_register_class">Register</string>
     <string name="button_register_class_full">Full</string>
     <string name="button_select_trainers">Select trainers</string>
-
+    <string name="action_open_map">Map</string>
+    
     <string name="action_send_email">Send email</string>
     <string name="action_send_sms">Send sms</string>
 
