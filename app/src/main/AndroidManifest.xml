@@ -39,6 +39,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity android:name=".feature.news.NewsDetailsActivity" />
+
+
         <activity
             android:name=".feature.session.SessionDetailsActivity"
             android:label="@string/title_activity_class_details"
@@ -50,7 +52,7 @@
         <activity
             android:name=".feature.trainer.TrainerDetailActivity"
             android:label="@string/title_activity_trainer_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme"  />
     </application>
 
 </manifest>
