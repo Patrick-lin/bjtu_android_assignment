@@ -2,14 +2,19 @@ package com.example.patricklin.gymclub.feature.video
 
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import com.example.patricklin.gymclub.R
 import com.example.patricklin.gymclub.core.BaseActivity
 import com.example.patricklin.gymclub.model.video.VideoDescription
 import com.example.patricklin.gymclub.model.video.VideoService
+import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.DefaultRenderersFactory
 import kotlinx.android.synthetic.main.activity_video.*
 
 import javax.inject.Inject
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 
 private const val VIDEO_ID = "video_id"
 
@@ -26,38 +31,24 @@ class VideoActivity : BaseActivity() {
         setContentView(R.layout.activity_video)
 
         video = videoService.getVideo(intent.getStringExtra(VIDEO_ID))
+        video?.let { video ->
+            val mediaSource = ExtractorMediaSource.Factory(
+                    DefaultDataSourceFactory(this, "GymClub")
+            ).createMediaSource(Uri.parse(video.streamUrl))
 
-        video_action.visibility = View.GONE
-        video_loading.visibility = View.VISIBLE
-        video?.also { video ->
-            video_player.apply {
-                setVideoURI(Uri.parse(video.streamUrl))
-                setOnPreparedListener {
-                    video_loading.visibility = View.GONE
+            val player = ExoPlayerFactory.newSimpleInstance(
+                    DefaultRenderersFactory(this),
+                    DefaultTrackSelector(),
+                    DefaultLoadControl()
+            )
+            player.playWhenReady = true
+            player.prepare(mediaSource)
 
-                    video_action.visibility = View.VISIBLE
-                    video_action.setImageResource(R.drawable.ic_video_play)
-                    this.start()
-                }
-            }
+            video_player.player = player
         }
 
         video_close.setOnClickListener {
             onBackPressed()
-        }
-
-        video_action.setOnClickListener { togglePlay() }
-    }
-
-
-
-    private fun togglePlay() {
-        if (video_player.isPlaying) {
-            video_action.setImageResource(R.drawable.ic_video_pause)
-            video_player.pause()
-        } else {
-            video_action.setImageResource(R.drawable.ic_video_play)
-            video_player.start()
         }
     }
 
