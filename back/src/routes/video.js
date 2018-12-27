@@ -21,7 +21,6 @@ export default (app) => {
 
   app.get('/video/stream/:id', async (req, res) => {
     const filePath = path.join(__dirname, '../../videos/sample.mp4');
-    console.log(filePath);
 
     try {
       const stat = await new Promise((resolve, reject) => fs.stat(filePath, (err, stats) => {
@@ -41,7 +40,6 @@ export default (app) => {
         const end = partialEnd ? parseInt(partialEnd, 10) : total - 1;
         
         const chunksize = (end - start)+1;
-        console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
         
         var file = fs.createReadStream(filePath, { start, end });
         res.writeHead(206, {
@@ -51,7 +49,6 @@ export default (app) => {
         });
         file.pipe(res);
       } else {
-        console.log('ALL: ' + total);
         res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
         fs.createReadStream(filePath).pipe(res);
       }
