@@ -22,7 +22,6 @@ class NewsFragment : BaseFragment() {
 
     private var listener: OnNewsInteraction? = null
     private var newsAdapter: NewsCardRecyclerViewAdapter? = null
-    private var cursor: String? = null
 
     @Inject
     lateinit var newsService: NewsService

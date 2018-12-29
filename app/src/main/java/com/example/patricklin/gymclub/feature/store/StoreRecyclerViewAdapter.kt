@@ -1,4 +1,4 @@
-package com.example.patricklin.gymclub.feature.session
+package com.example.patricklin.gymclub.feature.store
 
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
@@ -11,27 +11,27 @@ import com.bumptech.glide.Glide
 import com.example.patricklin.gymclub.R
 
 
-import com.example.patricklin.gymclub.feature.session.SessionsFragment.OnClassesFragmentInteractionListener
-import com.example.patricklin.gymclub.model.session.Session
+import com.example.patricklin.gymclub.feature.store.StoreFragment.OnClassesFragmentInteractionListener
+import com.example.patricklin.gymclub.model.store.Store
 import kotlinx.android.synthetic.main.fragment_class_item.view.*
 
-class SessionsRecyclerViewAdapter(
+class StoreRecyclerViewAdapter(
         private val fragment: Fragment,
-        private var sessions: List<Session>,
+        private var stores: List<Store>,
         private val mListener: OnClassesFragmentInteractionListener?)
-    : RecyclerView.Adapter<SessionsRecyclerViewAdapter.ViewHolder>() {
+    : RecyclerView.Adapter<StoreRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Session
+            val item = v.tag as Store
             mListener?.onClassSelect(item)
         }
     }
 
-    fun updateClasses(sessions: List<Session>) {
-        this.sessions = sessions
+    fun updateClasses(stores: List<Store>) {
+        this.stores = stores
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,20 +41,20 @@ class SessionsRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = sessions[position]
-        holder.title.text = item.title
-        holder.tagLine.text = item.tagLine
+        val item = stores[position]
+        holder.title.text = item.name
+//        holder.tagLine.text = item.tagLine
 
         if (item.cover != null) {
             Glide.with(fragment).load(item.cover).into(holder.cover)
         }
 
-        if (item.isFull()) {
-            holder.unavailable.visibility = View.VISIBLE
-            holder.unavailable.text = fragment.getString(R.string.full_class)
-        } else {
-            holder.unavailable.visibility = View.GONE
-        }
+//        if (item.isFull()) {
+//            holder.unavailable.visibility = View.VISIBLE
+//            holder.unavailable.text = fragment.getString(R.string.full_class)
+//        } else {
+//            holder.unavailable.visibility = View.GONE
+//        }
 
         with(holder.mView) {
             tag = item
@@ -62,7 +62,7 @@ class SessionsRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = sessions.size
+    override fun getItemCount(): Int = stores.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val title: TextView = mView.text_title

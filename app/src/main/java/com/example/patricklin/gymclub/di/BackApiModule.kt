@@ -2,7 +2,7 @@ package com.example.patricklin.gymclub.di
 
 import com.example.patricklin.gymclub.BuildConfig
 import com.example.patricklin.gymclub.model.news.NewsApi
-import com.example.patricklin.gymclub.model.session.SessionApi
+import com.example.patricklin.gymclub.model.store.StoreApi
 import com.example.patricklin.gymclub.model.trainer.TrainerApi
 import com.example.patricklin.gymclub.model.user.UserApi
 import com.example.patricklin.gymclub.model.video.VideoApi
@@ -35,7 +35,7 @@ class BackApiModule {
 
     @Provides
     @Singleton
-    fun provideClassApi(): SessionApi = api.create(SessionApi::class.java)
+    fun provideStoreApi(): StoreApi = api.create(StoreApi::class.java)
 
     @Provides
     @Singleton

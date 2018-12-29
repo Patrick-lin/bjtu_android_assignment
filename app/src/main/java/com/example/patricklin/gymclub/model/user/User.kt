@@ -1,3 +1,10 @@
 package com.example.patricklin.gymclub.model.user
 
-data class User(val username: String)
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+@Entity(tableName = "user")
+data class User(
+        @PrimaryKey
+        val token: String
+)

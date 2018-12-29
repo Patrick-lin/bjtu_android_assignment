@@ -11,6 +11,8 @@ import addTrainerRoutes from './routes/trainer';
 import addClassRoutes from './routes/class';
 import addNewsRoute from './routes/news';
 import addVideoRoute from './routes/video';
+import addStoreRoute from './routes/stores';
+import addProductsRoute from './routes/products';
 
 import initDb from './initData';
 
@@ -30,6 +32,8 @@ addTrainerRoutes(app);
 addClassRoutes(app);
 addNewsRoute(app);
 addVideoRoute(app);
+addStoreRoute(app);
+addProductsRoute(app);
 
 loadDatabase().then(async () => {
   initDb();

@@ -4,6 +4,7 @@ import com.example.patricklin.gymclub.core.UseCase
 import com.example.patricklin.gymclub.model.user.UserApi
 
 interface AuthService {
+    suspend fun syncDb()
     fun isLogged(): Boolean
     fun getToken(): String?
     fun getAuthHeader(): String
@@ -14,5 +15,5 @@ interface AuthService {
     val logIn: UseCase<UserApi.AuthResult, UserApi.LogInInput>
     val register: UseCase<UserApi.AuthResult, UserApi.RegisterInput>
 
-    fun logOut()
+    suspend fun logOut()
 }

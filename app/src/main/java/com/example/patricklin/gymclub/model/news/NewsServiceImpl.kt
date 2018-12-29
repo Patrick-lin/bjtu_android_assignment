@@ -23,10 +23,14 @@ class NewsServiceImpl(val newsApi: NewsApi) : NewsService {
 
     override fun refreshNewsList() {
         GlobalScope.launch {
-            val limit = news.value?.size ?: 0 + 20
-            val res = newsApi.getNewsList(limit = limit).await()
-            cursor = res.cursor
-            news.postValue(res.list)
+            try {
+                val limit = news.value?.size ?: 0 + 20
+                val res = newsApi.getNewsList(limit = limit).await()
+                cursor = res.cursor
+                news.postValue(res.list)
+            } catch (err: Throwable) {
+                Log.e("test", "$err")
+            }
         }
     }
 
@@ -36,11 +40,15 @@ class NewsServiceImpl(val newsApi: NewsApi) : NewsService {
         }
 
         GlobalScope.launch {
-            val res = newsApi.getNewsList(cursor = cursor).await()
-            val list = news.value.orEmpty().toMutableList()
-            list.addAll(res.list)
-            cursor = res.cursor
-            news.postValue(list)
+            try {
+                val res = newsApi.getNewsList(cursor = cursor).await()
+                val list = news.value.orEmpty().toMutableList()
+                list.addAll(res.list)
+                cursor = res.cursor
+                news.postValue(list)
+            } catch (err: Throwable) {
+                Log.e("test", "$err")
+            }
         }
     }
 }
